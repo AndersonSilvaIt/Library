@@ -43,7 +43,7 @@ jobs:
 
       - name: Pull & restart container (HTTP only)
         shell: powershell
-        run:
+        run: |
           Write-Host "Pulling image $env:IMAGE_NAME"
           docker pull $env:IMAGE_NAME"
 
