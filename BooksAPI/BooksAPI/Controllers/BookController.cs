@@ -21,7 +21,7 @@ namespace BooksAPI.Controllers
                     new BookViewModel { Id = Guid.NewGuid(), Title = "1984",                  Author = "George Orwell",            PublicationDate = new DateTime(1949,  6,  8), Price = 29.90m },
                     new BookViewModel { Id = Guid.NewGuid(), Title = "Clean Code",            Author = "Robert C. Martin",         PublicationDate = new DateTime(2008,  8,  1), Price = 79.50m },
                     new BookViewModel { Id = Guid.NewGuid(), Title = "The Pragmatic Programmer", Author = "Andrew Hunt e David Thomas", PublicationDate = new DateTime(1999, 10, 30), Price = 89.90m },
-                    new BookViewModel { Id = Guid.NewGuid(), Title = "Domain-Driven Design",  Author = "Eric Evans",               PublicationDate = new DateTime(2003,  8, 30), Price = 99.00m }
+                    new BookViewModel { Id = Guid.NewGuid(), Title = "Domain-Driven Design",  Author = "Eric Evans", PublicationDate = new DateTime(2003,  8, 30), Price = 99.00m }
                 };
         }
     }
