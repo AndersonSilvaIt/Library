@@ -44,17 +44,15 @@ jobs:
       - name: Pull & restart container (HTTP only)
         shell: powershell
         run: |
-          Write-Host "Pulling image $env:IMAGE_NAME"
-          docker pull $env:IMAGE_NAME"
+          Write-Host "Pulling image $Env:IMAGE_NAME"
+          docker pull $Env:IMAGE_NAME
 
-          Write-Host "Removing any existing container named 'bookapi-container' "
-          docker rm -f bookapi-container || true
+          Write-Host "Removing any existing container named 'bookapi-container'"
+          docker rm -f bookapi-container || $true
 
           Write-Host "Starting new container on host 8086..."
           docker run -d `
-            --name bookapi-container  `
+            --name bookapi-container `
             -p 8086:80 `
-            -e ASPNETCORE_URLS=http://+:80`
-            $env:IMAGE_NAME"
-
-      
+            -e ASPNETCORE_URLS="http://+:80" `
+            $Env:IMAGE_NAME
