@@ -47,7 +47,7 @@ jobs:
           Write-Host "Pulling image $env:IMAGE_NAME"
           docker pull $env:IMAGE_NAME"
 
-          Write-Host "Removing any existing container named 'bookapi-container' (if present)..."
+          Write-Host "Removing any existing container named 'bookapi-container' "
           docker rm -f bookapi-container || true
 
           Write-Host "Starting new container on host 8086..."
