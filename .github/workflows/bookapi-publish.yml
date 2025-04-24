@@ -33,7 +33,7 @@ jobs:
 
   deploy-container:
     needs: build-and-push
-    runs-on: [Self-hosted, Windows, X64]
+    runs-on: [self-hosted, windows, x64]
     env:
       IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookapi:latest
 
@@ -41,15 +41,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Pull & restart container (HTTP only)
-        shell: powershell
+      - name: Pull image
+        shell: pwsh
         run: |
           Write-Host "Pulling image $Env:IMAGE_NAME"
           docker pull $Env:IMAGE_NAME
 
+      - name: Remove old container (ignore if not exists)
+        shell: pwsh
+        continue-on-error: true
+        run: |
           Write-Host "Removing any existing container named 'bookapi-container'"
-          docker rm -f bookapi-container 2>$null
+          docker rm -f bookapi-container
 
+      - name: Start new container
+        shell: pwsh
+        run: |
           Write-Host "Starting new container on host 8086..."
           docker run -d `
             --name bookapi-container `
